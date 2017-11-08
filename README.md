@@ -129,12 +129,8 @@ persistPartitioned[]
 
 
 ## Running the tests
-
-Explain how to run the automated tests for this system
-
+Using QUnit - KDB Unit Testing Framework to test my .perms.q script
 ### Break down into end to end tests
-
-Explain what these tests test and why
 
 ```
 Give an example
