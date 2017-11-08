@@ -22,12 +22,6 @@ Extract to home directory
 ```
 C:\Users\User
 ```
-
-And repeat
-
-```
-until finished
-```
 ## Unix
 
 Extract to home directory
