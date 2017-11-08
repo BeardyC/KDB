@@ -16,21 +16,117 @@ OS: Windows/Unix
 
 ### Installing
 A step by step series of examples that tell you have to get a development env running
-## Windows
+
 Extract to home directory
 
+#### Windows
 ```
 C:\Users\User
 ```
-## Unix
-
-Extract to home directory
-
+#### Unix
 ```
 /home/user
 ```
+### Setup
 
-End with an example of getting some data out of the system or using it for a little demo
+Navigate to the installation folder.
+Start the Ticker Plant with -S flag to deal with pseudorandom problems
+```
+q tp.q -S number
+```
+Start the RDB 
+```
+q rdb.q
+```
+To start the Feed Handler navigate to 
+```
+.\kdbFH\src\main\java 
+```
+```
+./kdbFH/src/main/java
+```
+Start the Java application by using one of the two commands:
+##### Windows
+```
+java -cp . jc.m3.App
+```
+##### Unix
+```
+java jc/m3/App
+```
+Login with preset Feed Handler credentialsr:
+```
+username: fh
+password: password
+```
+
+Upon completing this step all 3 instances are connected.
+
+## API
+
+### perms.q
+
+This script gives us the ability to manage users that can connect to the Ticker Plant, this was developed to showcase the modified versions of the z functions to control and monitor user access. Implementing this in a private namespace, .perm, keeps the functions from accidental or unwanted use.
+
+This allows the functions of adding, removing, editing users **within the tp process** since it's loaded on start.
+
+##### .perm Functions:
+
+###### Add User
+
+```
+.perm.add[`user;`password]
+```
+###### Edit User 
+
+```
+.perm.edit[`user; new `password]
+```
+###### Remove User
+
+```
+.perm.remove[`user]
+```
+
+
+##### Utils
+Salting - returns a random Salt to be used with the password for encryption, 
+```
+.perm.salting[]
+```
+Encrypt - Uses MD5 hashing to encrypt the salted password so it's save for storage
+```
+.perm.encrypt[salt;password] 
+```
+
+### tp.q
+.u.upd - Called by the Java Feed Handler once connected to send over the generated data. It then both saves the data in a table and also saves it in the **logfile** which the RDB can request to replay back from.
+
+```
+.u.upd[tableName; tableData]
+```
+
+### rdb.q
+.u.replay - Requests the logfile handle from the tickerplant and then replays the logfile contents to store them in memory.
+
+```
+.u.replay[]
+```
+
+persistX - Saves in memory database to disk in different formats.
+```
+persistBlob[]
+persistSplay[]
+persistPartitioned[]
+```
+
+
+
+
+
+
+
+
 
 ## Running the tests
 
@@ -68,13 +164,10 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Jose Costa** 
 
 ## License
 
