@@ -137,7 +137,7 @@ All tests are contained in authTest.q, to add any further testing simply append 
 status name                            result actual expected msg                        time mem  maxTime maxMem namespace
 ----------------------------------------------------------------------------------------------------------------------------
 pass   .authTest.testAConvInt         "42"   "42"   "42"     "Converted int"            0    2816 0W      0W     .authTest
-pass   .authTest.testAConvStrinfg      "test" "test" "test"   "String already converted" 0    2816 0W      0W     .authTest
+pass   .authTest.testAConvStrinfg     "test" "test" "test"   "String already converted" 0    2816 0W      0W     .authTest
 pass   .authTest.testAConvSym         "test" "test" "test"   "Converted symbol"         0    2816 0W      0W     .authTest
 pass   .authTest.testBAddUser1        1b     1b     1b       "Added user"               0    8736 0W      0W     .authTest
 pass   .authTest.testBAddUser2        1b     1b     1b       "Added user"               8    8656 0W      0W     .authTest
