@@ -20,15 +20,15 @@ OS: Windows/Unix
 ### Installing
 A step by step series of examples that tell you have to get a development env running
 
-Extract to home directory
+Extract the kdbProject folder to your home directory
 
 #### Windows
 ```
-C:\Users\User
+C:\Users\User\kdbProject
 ```
 #### Unix
 ```
-/home/user
+/home/user/kdbProject
 ```
 ### Setup
 
@@ -42,9 +42,11 @@ Start the RDB
 q rdb.q
 ```
 To start the Feed Handler navigate to 
+#### Windows
 ```
 .\kdbFH\src\main\java 
 ```
+#### Unix
 ```
 ./kdbFH/src/main/java
 ```
