@@ -90,11 +90,11 @@ This allows the functions of adding, removing, editing users **within the tp pro
 
 
 ##### Utils
-Salting - returns a random Salt to be used with the password for encryption, 
+Salting - returns a random Salt to be used with the password for encryption. 
 ```
 .perm.salting[]
 ```
-Encrypt - Uses MD5 hashing to encrypt the salted password so it's save for storage
+Encrypt - Uses MD5 hashing to encrypt the salted password so it's safe for storage.
 ```
 .perm.encrypt[salt;password] 
 ```
@@ -120,29 +120,21 @@ persistSplay[]
 persistPartitioned[]
 ```
 
-
-
-
-
-
-
-
-
 ## Running the tests
 Using QUnit - KDB Unit Testing Framework to test my .perms.q script
 
-A script, testcomp.q, is included that can be loaded that will load all the required scripts and run the tests. 
+A script, testcomp.q, is included that can be executed that will load all the required scripts and run the tests. 
 ```
 q testcomp.q
 ```
 All tests are contained in permsTest.q, to add any further testing simply append tests to this file.
 
 ##### Sample output
-
+```
 status name                            result actual expected msg                        time mem  maxTime maxMem namespace
 ----------------------------------------------------------------------------------------------------------------------------
 pass   .permsTest.testAConvInt         "42"   "42"   "42"     "Converted int"            0    2816 0W      0W     .permsTest
-pass   .permsTest.testAConvString      "test" "test" "test"   "String already converted" 0    2816 0W      0W     .permsTest
+pass   .permsTest.testAConvStrinfg      "test" "test" "test"   "String already converted" 0    2816 0W      0W     .permsTest
 pass   .permsTest.testAConvSym         "test" "test" "test"   "Converted symbol"         0    2816 0W      0W     .permsTest
 pass   .permsTest.testBAddUser1        1b     1b     1b       "Added user"               0    8736 0W      0W     .permsTest
 pass   .permsTest.testBAddUser2        1b     1b     1b       "Added user"               8    8656 0W      0W     .permsTest
@@ -153,31 +145,11 @@ pass   .permsTest.testCAddUserDupCount 3      3      3        "Count Users"     
 pass   .permsTest.testDRemoveUser      1b     1b     1b       "Removed user"             1    3616 0W      0W     .permsTest
 pass   .permsTest.testDRemoveUserF     0b     0b     0b       "No user found"            7    2816 0W      0W     .permsTest
 pass   .permsTest.testECountUsers      2      2      2        "Count Users"              0    2816 0W      0W     .permsTest
-
-### And coding style tests
-
-Explain what these tests test and why
-
 ```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
+* [qUnit](http://www.timestored.com/kdb-guides/kdb-regression-unit-tests) - Test Framework Used
 
 ## Authors
 
@@ -185,11 +157,10 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* David Hodgins
+
 
