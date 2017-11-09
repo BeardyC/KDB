@@ -4,7 +4,7 @@ Implementing a feed handler in Java to interface with a ticker plant in KDB+.
 
 Build a user verification system to restrict user access on entry.
 <p align="center">
-  <img src="https://i.imgur.com/KGZuCZq.png" alt=""/>
+  <img src="https://i.imgur.com/tL4LB5k.png" alt=""/>
 </p>
 
 ## Getting Started
@@ -67,39 +67,39 @@ Upon completing this step all 3 instances are connected.
 
 ## API
 
-### perms.q
+### auth.q
 
-This script gives us the ability to manage users that can connect to the Ticker Plant, this was developed to showcase the modified versions of the z functions to control and monitor user access. Implementing this in a private namespace, .perm, keeps the functions from accidental or unwanted use.
+This script gives us the ability to manage users that can connect to the Ticker Plant, this was developed to showcase the modified versions of the z functions to control and monitor user access. Implementing this in a private namespace, .auth, keeps the functions from accidental or unwanted use.
 
 This allows the functions of adding, removing, editing users **within the tp process** since it's loaded on start.
 
-##### .perm Functions:
+##### .auth Functions:
 
 ###### Add User
 
 ```
-.perm.add[`user;`password]
+.auth.add[`user;`password]
 ```
 ###### Edit User 
 
 ```
-.perm.edit[`user; new `password]
+.auth.edit[`user; new `password]
 ```
 ###### Remove User
 
 ```
-.perm.remove[`user]
+.auth.remove[`user]
 ```
 
 
 ##### Utils
 Salting - returns a random Salt to be used with the password for encryption. 
 ```
-.perm.salting[]
+.auth.salting[]
 ```
 Encrypt - Uses MD5 hashing to encrypt the salted password so it's safe for storage.
 ```
-.perm.encrypt[salt;password] 
+.auth.encrypt[salt;password] 
 ```
 
 ### tp.q
@@ -124,30 +124,30 @@ persistPartitioned[]
 ```
 
 ## Running the tests
-Using QUnit - KDB Unit Testing Framework to test my .perms.q script
+Using QUnit - KDB Unit Testing Framework to test my .auth.q script
 
 A script, testcomp.q, is included that can be executed that will load all the required scripts and run the tests. 
 ```
 q testcomp.q
 ```
-All tests are contained in permsTest.q, to add any further testing simply append tests to this file.
+All tests are contained in authTest.q, to add any further testing simply append tests to this file.
 
 ##### Sample output
 ```
 status name                            result actual expected msg                        time mem  maxTime maxMem namespace
 ----------------------------------------------------------------------------------------------------------------------------
-pass   .permsTest.testAConvInt         "42"   "42"   "42"     "Converted int"            0    2816 0W      0W     .permsTest
-pass   .permsTest.testAConvStrinfg      "test" "test" "test"   "String already converted" 0    2816 0W      0W     .permsTest
-pass   .permsTest.testAConvSym         "test" "test" "test"   "Converted symbol"         0    2816 0W      0W     .permsTest
-pass   .permsTest.testBAddUser1        1b     1b     1b       "Added user"               0    8736 0W      0W     .permsTest
-pass   .permsTest.testBAddUser2        1b     1b     1b       "Added user"               8    8656 0W      0W     .permsTest
-pass   .permsTest.testBAddUser3        1b     1b     1b       "Added User"               7    8672 0W      0W     .permsTest
-pass   .permsTest.testBAddUserCount    3      3      3        "Count Users"              0    2816 0W      0W     .permsTest
-pass   .permsTest.testCAddUserDup      0b     0b     0b       "Duplicate"                9    8672 0W      0W     .permsTest
-pass   .permsTest.testCAddUserDupCount 3      3      3        "Count Users"              0    2880 0W      0W     .permsTest
-pass   .permsTest.testDRemoveUser      1b     1b     1b       "Removed user"             1    3616 0W      0W     .permsTest
-pass   .permsTest.testDRemoveUserF     0b     0b     0b       "No user found"            7    2816 0W      0W     .permsTest
-pass   .permsTest.testECountUsers      2      2      2        "Count Users"              0    2816 0W      0W     .permsTest
+pass   .authTest.testAConvInt         "42"   "42"   "42"     "Converted int"            0    2816 0W      0W     .authTest
+pass   .authTest.testAConvStrinfg      "test" "test" "test"   "String already converted" 0    2816 0W      0W     .authTest
+pass   .authTest.testAConvSym         "test" "test" "test"   "Converted symbol"         0    2816 0W      0W     .authTest
+pass   .authTest.testBAddUser1        1b     1b     1b       "Added user"               0    8736 0W      0W     .authTest
+pass   .authTest.testBAddUser2        1b     1b     1b       "Added user"               8    8656 0W      0W     .authTest
+pass   .authTest.testBAddUser3        1b     1b     1b       "Added User"               7    8672 0W      0W     .authTest
+pass   .authTest.testBAddUserCount    3      3      3        "Count Users"              0    2816 0W      0W     .authTest
+pass   .authTest.testCAddUserDup      0b     0b     0b       "Duplicate"                9    8672 0W      0W     .authTest
+pass   .authTest.testCAddUserDupCount 3      3      3        "Count Users"              0    2880 0W      0W     .authTest
+pass   .authTest.testDRemoveUser      1b     1b     1b       "Removed user"             1    3616 0W      0W     .authTest
+pass   .authTest.testDRemoveUserF     0b     0b     0b       "No user found"            7    2816 0W      0W     .authTest
+pass   .authTest.testECountUsers      2      2      2        "Count Users"              0    2816 0W      0W     .authTest
 ```
 
 ## Built With
@@ -165,6 +165,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 ## Acknowledgments
 
 * David Hodgins
-* Alex Wong
-
 
