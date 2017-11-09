@@ -130,11 +130,29 @@ persistPartitioned[]
 
 ## Running the tests
 Using QUnit - KDB Unit Testing Framework to test my .perms.q script
-### Break down into end to end tests
 
+A script, testcomp.q, is included that can be loaded that will load all the required scripts and run the tests. 
 ```
-Give an example
+q testcomp.q
 ```
+All tests are contained in permsTest.q, to add any further testing simply append tests to this file.
+
+##### Sample output
+
+status name                            result actual expected msg                        time mem  maxTime maxMem namespace
+----------------------------------------------------------------------------------------------------------------------------
+pass   .permsTest.testAConvInt         "42"   "42"   "42"     "Converted int"            0    2816 0W      0W     .permsTest
+pass   .permsTest.testAConvString      "test" "test" "test"   "String already converted" 0    2816 0W      0W     .permsTest
+pass   .permsTest.testAConvSym         "test" "test" "test"   "Converted symbol"         0    2816 0W      0W     .permsTest
+pass   .permsTest.testBAddUser1        1b     1b     1b       "Added user"               0    8736 0W      0W     .permsTest
+pass   .permsTest.testBAddUser2        1b     1b     1b       "Added user"               8    8656 0W      0W     .permsTest
+pass   .permsTest.testBAddUser3        1b     1b     1b       "Added User"               7    8672 0W      0W     .permsTest
+pass   .permsTest.testBAddUserCount    3      3      3        "Count Users"              0    2816 0W      0W     .permsTest
+pass   .permsTest.testCAddUserDup      0b     0b     0b       "Duplicate"                9    8672 0W      0W     .permsTest
+pass   .permsTest.testCAddUserDupCount 3      3      3        "Count Users"              0    2880 0W      0W     .permsTest
+pass   .permsTest.testDRemoveUser      1b     1b     1b       "Removed user"             1    3616 0W      0W     .permsTest
+pass   .permsTest.testDRemoveUserF     0b     0b     0b       "No user found"            7    2816 0W      0W     .permsTest
+pass   .permsTest.testECountUsers      2      2      2        "Count Users"              0    2816 0W      0W     .permsTest
 
 ### And coding style tests
 
